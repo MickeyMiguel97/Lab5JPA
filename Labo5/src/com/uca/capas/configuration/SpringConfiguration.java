@@ -13,27 +13,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.uca.capas")
-public class SpringConfiguration implements WebMvcConfigurer {
-
+public class SpringConfiguration implements WebMvcConfigurer{
 	@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
-
 	}
-	
-	@Bean
-	public MappingJackson2HttpMessageConverter jsonConverter() {
-		return new MappingJackson2HttpMessageConverter();
-	}
-	
-	//Metodo estatico, le decimos a donde buscar archivos estaticos(Imagenes,css,js,etc)
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-		
-	}
-
 }
